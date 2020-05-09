@@ -1,5 +1,5 @@
 /*****************************************************************
-* Description: scarakins.c
+* Description: gypsykins.c
 *   Kinematics for scara typed robots
 *   Set the params using HAL to fit your robot
 *
@@ -101,7 +101,6 @@ int kinematicsForward(const double * joint,
 
     x = D2*rtapi_cos(a0) + D4*rtapi_cos(a1);// + D6*rtapi_cos(a3);
     y = D2*rtapi_sin(a0) + D4*rtapi_sin(a1);// + D6*rtapi_sin(a3);
-    /* z = D1 + D3 - joint[2] - D5; */
     z = D1 + D3 + joint[2] - D5;
     //c = a3;
 	
@@ -204,7 +203,7 @@ static vtkins_t vtk = {
 };
 
 static int comp_id, vtable_id;
-static const char *name = "scarakins";
+static const char *name = "gypsykins";
 
 MODULE_LICENSE("GPL");
 
@@ -225,12 +224,12 @@ int rtapi_app_main(void)
 
     haldata = hal_malloc(sizeof(*haldata));
     if (!haldata) goto error;
-    if((res = hal_pin_float_new("scarakins.D1", HAL_IO, &(haldata->d1), comp_id)) < 0) goto error;
-    if((res = hal_pin_float_new("scarakins.D2", HAL_IO, &(haldata->d2), comp_id)) < 0) goto error;
-    if((res = hal_pin_float_new("scarakins.D3", HAL_IO, &(haldata->d3), comp_id)) < 0) goto error;
-    if((res = hal_pin_float_new("scarakins.D4", HAL_IO, &(haldata->d4), comp_id)) < 0) goto error;
-    if((res = hal_pin_float_new("scarakins.D5", HAL_IO, &(haldata->d5), comp_id)) < 0) goto error;
-    if((res = hal_pin_float_new("scarakins.D6", HAL_IO, &(haldata->d6), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D1", HAL_IO, &(haldata->d1), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D2", HAL_IO, &(haldata->d2), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D3", HAL_IO, &(haldata->d3), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D4", HAL_IO, &(haldata->d4), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D5", HAL_IO, &(haldata->d5), comp_id)) < 0) goto error;
+    if((res = hal_pin_float_new("gypsykins.D6", HAL_IO, &(haldata->d6), comp_id)) < 0) goto error;
     
     D1 = DEFAULT_D1;
     D2 = DEFAULT_D2;
